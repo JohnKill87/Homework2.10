@@ -1,14 +1,14 @@
 package pro.sky.onlinestoredemo.Controllers;
 
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pro.sky.onlinestoredemo.Essences.Basket;
 import pro.sky.onlinestoredemo.Services.StoreService;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
-@RequestMapping("/store/order")
+@RequestMapping("/order")
 public class StoreController {
 
     @ExceptionHandler({RuntimeException.class})
@@ -22,9 +22,14 @@ public class StoreController {
         this.storeService = storeService;
     }
 
-    public Basket addBasket (@RequestParam("name") String name,
-                             @RequestParam("id") Integer id) {
-        return storeService.addBasket(name, id);
+    @GetMapping(path = "/add")
+    public Basket addBasket (@RequestParam("id") Integer id) {
+        return storeService.addBasket(id);
+    }
+
+    @GetMapping(path = "/get")
+    public List<Basket> getBasket() {
+        return storeService.getBasket();
     }
 
 }

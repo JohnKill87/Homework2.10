@@ -1,16 +1,12 @@
 package pro.sky.onlinestoredemo.Essences;
 
+import java.util.Objects;
+
 public class Basket {
-    private String name;
-    private Integer id;
+    private final Integer id;
 
-    public Basket(String name, Integer id) {
-        this.name = name;
+    public Basket(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Integer getId() {
@@ -20,8 +16,20 @@ public class Basket {
     @Override
     public String toString() {
         return "Basket{" +
-                "name='" + name + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Basket basket = (Basket) o;
+        return Objects.equals(id, basket.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
