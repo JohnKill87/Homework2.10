@@ -9,19 +9,19 @@ import java.util.List;
 
 @Service
 @SessionScope
-public class StoreServiceImpl implements StoreService{
-    List<Basket> baskets = new ArrayList<>(List.of());
+public class BasketServiceImpl implements BasketService {
+    List<Integer> baskets = new ArrayList<>(List.of());
 
     @Override
-    public Basket addBasket(Integer id) {
+    public List<Integer> addBasket(List<Integer> id) {
 
-        Basket addedBasket = new Basket(id);
-        baskets.add(addedBasket);
-        return addedBasket;
+//        Basket addedBasket = new Basket(id);
+        baskets.addAll(id);
+        return baskets;
     }
 
     @Override
-    public List<Basket> getBasket() {
+    public List<Integer> getBasket() {
         return baskets;
     }
 }
