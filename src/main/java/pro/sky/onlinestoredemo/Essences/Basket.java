@@ -1,27 +1,12 @@
 package pro.sky.onlinestoredemo.Essences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Basket {
-    private String name;
-    private Integer id;
+    private List<Integer> id = new ArrayList<>();
 
-    public Basket(String name, Integer id) {
-        this.name = name;
+    public Basket(List<Integer> id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public String toString() {
-        return "Basket{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                '}';
     }
 }
